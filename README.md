@@ -1,2 +1,2 @@
 # DoodersUI
-User Interface for Dooder SDK
+User Interface for [Dooders SDK](https://github.com/csmangum/Dooders)
