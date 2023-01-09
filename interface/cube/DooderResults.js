@@ -1,5 +1,5 @@
-cube(`SimulationResults`, {
-  sql: `SELECT * FROM public."SimulationResults"`,
+cube(`DooderResults`, {
+  sql: `SELECT * FROM public."DooderResults"`,
 
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -11,44 +11,49 @@ cube(`SimulationResults`, {
   measures: {
     count: {
       type: `count`,
-      drillMembers: [ExperimentID, CycleNumber],
+      drillMembers: [UniqueID, CycleNumber],
     },
 
-    DooderCount: {
-      sql: `${CUBE}."DooderCount"`,
+    TotalAge: {
+      sql: `${CUBE}."Age"`,
       type: `sum`,
     },
 
-    EnergyCount: {
-      sql: `${CUBE}."EnergyCount"`,
-      type: `sum`,
+    AvgAge: {
+      sql: `${CUBE}."Age"`,
+      type: `avg`,
     },
 
     TotalEnergySupply: {
-      sql: `${CUBE}."TotalDooderEnergySupply"`,
+      sql: `${CUBE}."EnergySupply"`,
       type: `sum`,
     },
 
     AvgEnergySupply: {
-      sql: `${CUBE}."TotalDooderEnergySupply"`,
-      type: `avg`,
-    },
-
-    AvgEnergyAge: {
-      sql: `${CUBE}."AverageEnergyAge"`,
+      sql: `${CUBE}."EnergySupply"`,
       type: `avg`,
     },
   },
 
   dimensions: {
-    ExperimentID: {
-      sql: `${CUBE}."ExperimentID"`,
+    UniqueID: {
+      sql: `${CUBE}."UniqueID"`,
+      type: `string`,
+    },
+
+    Position: {
+      sql: `${CUBE}."Position"`,
       type: `string`,
     },
 
     CycleNumber: {
       sql: `${CUBE}."CycleNumber"`,
       type: `number`,
+    },
+
+    Direction: {
+      sql: `${CUBE}."Direction"`,
+      type: `string`,
     },
   },
 
